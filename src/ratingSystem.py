@@ -78,8 +78,8 @@ def recordMatch(df, name1, name2, winner=None):
     else:
         raise InputError('One of the names must be the winner')
 
-    newRating1 = rating1 + k * (score1 - expected1)
-    newRating2 = rating2 + k * (score2 - expected2)
+    newRating1 = int(rating1 + k * (score1 - expected1))
+    newRating2 = int(rating2 + k * (score2 - expected2))
 
     if newRating1 < 0:
         newRating1 = 0
