@@ -1,5 +1,6 @@
 import pandas as pd 
 import config
+import numpy as np
 
 def compareRating(df, name1, name2):
     """
@@ -129,5 +130,7 @@ if __name__ == "__main__":
     df.to_csv(config.PLAYERS_FILEPATH)
     df = recordMatch(df, "Jack", "Henry", winner="Jack")
     print(df)
-
+    print(df.dtypes)
+    refresh = pd.DataFrame([[str('bob'),np.float64(5)]])   
+    print(refresh.dtypes)
     
