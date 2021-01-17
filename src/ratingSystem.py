@@ -95,13 +95,13 @@ def recordMatch(df, name1, name2, winner=None):
     return df
 
 def getPlayerRating(df, name):
-        """
-        Returns the rating of the player with the given name.
-        :param df: Pandas DataFrame with players and ratings 
-        :param name: name of the player
-        :return: the rating of the player with the given name
-        """
-        return df.loc[df['name'] == name, 'rating'].iloc[0]
+    """
+    Returns the rating of the player with the given name.
+    :param df: Pandas DataFrame with players and ratings 
+    :param name: name of the player
+    :return: the rating of the player with the given name
+    """
+    return df.loc[df['name'] == name, 'rating'].iloc[0]
 
 def updatePlayerRating(df, name, newRating):
     """
@@ -110,27 +110,8 @@ def updatePlayerRating(df, name, newRating):
     :param name: name of the player
     :param newRating: the new rating of the player
     """
-    df.loc[df["name"] == name, 'rating'] = newRating
+    df.loc[df["name"] == name, 'rating'] = int(newRating)
     return df
 
-
-    # def getRatingList(self):
-    #     """
-    #     Returns a list of tuples in the form of ({name},{rating})
-    #     :return: the list of tuples
-    #     """
-    #     ratings = []
-    #     for player in self.getPlayerList():
-    #         ratings.append((player.name, player.rating))
-    #     return ratings
-    
-if __name__ == "__main__":
-    df = pd.read_csv(config.PLAYERS_FILEPATH, index_col=0)
-    df = recordMatch(df, "Jack", "Henry", winner="Jack")
-    df.to_csv(config.PLAYERS_FILEPATH)
-    df = recordMatch(df, "Jack", "Henry", winner="Jack")
-    print(df)
-    print(df.dtypes)
-    refresh = pd.DataFrame([[str('bob'),np.float64(5)]])   
-    print(refresh.dtypes)
-    
+def getRankings(df):
+    return df['rating'].tolist()
