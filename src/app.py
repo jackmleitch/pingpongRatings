@@ -105,6 +105,6 @@ st.write("App created by [Jack Leitch](https://github.com/jackmleitch)")
 
 col1, col2, col3, col4 = st.beta_columns(4)
 with col2:
-    image = Image.open('../input/bronco.png')
+    image = Image.open('./input/bronco.png')
     st.image(image)
 
