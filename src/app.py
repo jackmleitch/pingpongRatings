@@ -22,7 +22,7 @@ with st.beta_container():
     table = st.table(dfColour)
     st.button('Reload rankings')
 
-st.write("Match results can be added between to ranked players in the sidebar (make sure to click 'Reload rankings' afterwards). You can also add players, remove players and adjust player ratings (admin only).")
+st.write("Match results can be added between two ranked players in the sidebar (make sure to click 'Reload rankings' afterwards). You can also add players, remove players and adjust player ratings (admin only).")
 st.write("To see a complete history of ranking updates [click here](https://twitter.com/BoisePing/)")
 
 
