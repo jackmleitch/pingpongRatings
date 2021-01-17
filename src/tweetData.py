@@ -3,9 +3,6 @@ import pandas as pd
 import config 
 import io
 
-df = pd.read_csv(config.PLAYERS_FILEPATH, index_col=0)
-textRankings = df.to_csv(sep=' ', index=True, header=True)
-
 class connectTwitter:
     def __init__(self):
         self.auth = tweepy.OAuthHandler(config.TWITTER_KEYS['consumer_key'], config.TWITTER_KEYS['consumer_secret'])
@@ -22,9 +19,16 @@ class connectTwitter:
         df = pd.read_csv(data, sep=" ")
         return df
 
+    def text(self):
+        tweet = self.client.user_timeline(self.clientId, count = 1)[0]
+        data = tweet.text
+        print(data)
 
-twitter = connectTwitter()
-twitter.updateRankings(textRankings)
-df = twitter.fetchRankings()
-print(df)
+if __name__ == "__main__":
+    # df = pd.read_csv(config.PLAYERS_FILEPATH, index_col=0)
+    # textRankings = df.to_csv(sep=' ', index=True, header=True)
+    twitter = connectTwitter()
+    # twitter.updateRankings(textRankings)
+    data = twitter.text()
+    print(str(data))
     
