@@ -40,7 +40,7 @@ def addPlayer(df, name, rating=None):
     """
     if rating == None:
         rating = config.BASE_RATING
-    tooAdd = pd.Series([name ,rating], index = df.columns)
+    tooAdd = pd.Series([name ,rating, 0], index = df.columns)
     df = df.append(tooAdd, ignore_index=True)
     return df 
 
@@ -111,6 +111,7 @@ def updatePlayerRating(df, name, newRating):
     :param newRating: the new rating of the player
     """
     df.loc[df["name"] == name, 'rating'] = int(newRating)
+    df.loc[df["name"] == name, 'games'] = df.loc[df["name"] == name, 'games'] + 1
     return df
 
 def getRankings(df):

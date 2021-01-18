@@ -14,8 +14,8 @@ class connectTwitter:
         self.client.update_status(status = rankings)
 
     def fetchRankings(self):
-        tweet = self.client.user_timeline(self.clientId, count = 1)[0]
-        data = io.StringIO(tweet.text)
+        tweet = self.client.user_timeline(self.clientId, count = 1, tweet_mode='extended')[0]
+        data = io.StringIO(tweet.full_text)
         df = pd.read_csv(data, sep=" ")
         return df
 
@@ -29,6 +29,6 @@ if __name__ == "__main__":
     # textRankings = df.to_csv(sep=' ', index=True, header=True)
     twitter = connectTwitter()
     # twitter.updateRankings(textRankings)
-    data = twitter.text()
-    print(str(data))
+    df = twitter.fetchRankings()
+    print(df)
     
