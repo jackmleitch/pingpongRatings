@@ -65,7 +65,7 @@ def recordMatch(df, name1, name2, winner=None):
     expected1 = compareRating(df, name1, name2)
     expected2 = compareRating(df, name2, name1)
     
-    k = len(getPlayerList(df)) * 42
+    k = 100
 
     rating1 = getPlayerRating(df, name1)
     rating2 = getPlayerRating(df, name2)
